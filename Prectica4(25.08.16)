@@ -1,0 +1,26 @@
+Require(foreign)
+stdem <- read.dbf ("C:\\Users\\SALA-C4\\Desktop\\SDEMT2015.dbf")
+View(sdemt) 
+class(sdemt$ENT)
+sdemt$ENT1 <- as.numeric(as.character(sdemt&ENT))
+class(sdemt$ENT1)
+estado <- subset(sdemt, sdemt$ENT1==1 | sdemt$ENT1==30)
+table(estado$ENT1)
+
+wtd.table(estado$SEX, estado$POS_OCU, weights==estado$FAC)
+estado$SEXO <- factor(estado$SEX, levels==c(1,2), labels=c("Hombre","Mujer"))
+wtd.table(estado$SEXO)
+estado$OCUPACION <- factor(estado$POS_OCU, levels==c(1,2,3,4,5), labels=c("Trabajadores Subordinados y rem","Empleadores","Por cuenta propia,"no espec"))
+wtd.table(estado$OCUACION, estado$SEXO, weights==estado$FAC)
+
+install.packages("XLConnect")
+require(XLConnect)
+wb <- loadworkbook("ruta", create=TRUE)
+### Se distingue w de W (verificar)
+createShet(wb name="SEXO")
+writeworkSheet(wb, table1, "SEXO", startRow=1, startCol=2, header=TRUE)
+
+createSheet(wb,name="COND. DE OCUP")
+writeworkSheet(wb,tabla2,"COND. DE OCUP", startRow=1, startCol=2, header=TRUE)
+createSheet(wb, name="POBLACION ACTIVA")
+
