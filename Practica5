@@ -1,0 +1,44 @@
+########## practica 5 #########################
+est <- c(1.2, 1.23, 1.19, 1.32, 1.28, 1.22, 1.17, 1.29, 1.33, 1.15)
+
+eco <- c(110, 130, 108, 167, 156, 115, 104, 138, 170, 107)
+
+##grafico de dispercion
+
+plot (eco, est, pch = 15, xlab = "ingreso economico",ylab = "estatura", main = "grafica de dispersion",col = "blue")
+     #ind, dep, 
+#xlab = etiqueta
+## dependiente estatura, 
+## queremos comprobar la hipotesis que entre mayor ingreso de la familia 
+#hay ua mayor estatura en los noños
+
+#relacion positiva
+
+#2 funcion cor, calcula el coeficiente de relacion
+  #2.1 var dep
+  #2.2 variable indep
+  #2.3 metodo de correlacion
+cor(est, eco, method = "pearson")
+help (cor)
+#datos hordenales usar kendal
+#3 la prueba hipotesis para esta funcion es ho = r=0 
+#es decir si no hay relacion ha=! 0 si relacion 
+cor.test(est, eco, method= "pearson")
+# si p- value es menos  .05 rechamos la nula
+#4 aplicamos el modelo
+# para alicar modelo se utliza lm()
+#primero y (indep) ~ x(dep)
+
+mod1 <- lm(est~eco)
+summary(mod1)
+##summary lo madamos llamar y nos da los reiduales
+# los asteriscos miden lo significativo que son los coeficientes
+# los residuales nos generan las diferencias entre los valores ajustados y los reales
+#en los resultados tenemos los coeficientes que continen que expone si los coef 
+#son significativo
+#los errores mas cercanos a 0 mejor
+#Y=B0+B1 ecuacion  de la recta "estimate"
+plot (eco, est, pch = 15, xlab = "ingreso economico",ylab ="estatura", main = "grafica de dispercion", col ="darkgreen")
+abline(mod1, col = "coral")
+#abline pone la linea que esta basada en modelo 1
+
