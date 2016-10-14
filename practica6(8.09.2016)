@@ -1,0 +1,42 @@
+#ecuacion de la recta
+est = .9323 + 0.0023 eco
+summary(mod1)$coefficients
+##se tiene un ajuste...
+esta = .9323+.0023 eco
+summary (mod1)
+##los valores a pvalue son inferiotres a .05 por lo que 
+##1. relacion lineal entre la var dependiente y la independencia relacion positiva
+## por cada peso de ingreso aunmenta el padre o madre
+## aumenta la estatura .0023
+## el error estandar residual es .0198, este valor es muy importante porque debiso que ´permite medir  
+##con este error generamos los intervalos de confianza 
+#los IC nos permiten complementar la informacion sobre las estimaciones 
+##para calcular IC se utiliza
+confint(mod1, level=0.95)
+
+#interpretacion... con una prob, de 95% b0 se encuentra en el intervalo (0.8542,1.0105)
+## y B1 se encuentra en el intervalo .0017, .0029
+
+## bondad de ajuste##
+
+##con la bondad de ajuste verificamos la calidad del modelo
+##al interpretar la variable dependiente para eso se utiliza la tabla anova 
+ 
+anova (mod1)
+
+#en  este caso la variabilidad explicada del modelo es .033022=SSM
+##se revisa la SSR = .0031
+##revisando los valores de summary el estadistico 
+##F es mayor a 1 p-value <.05
+##con estas revisones se puede mencionar que se rechaza la hipotesis nula de F=1
+##y se puede establecer un modelo
+
+summary(mod1)
+##Revisar R2 multiple
+##alrededor del 91% de la variabilidad de la estatura es explicada por la recta ajustada
+######SUPUESTOS######
+
+base1 <- date.frame(eco,esta)
+base1$fitted.mod1 <- fitted(mod1)
+base1$residuals.mod1 <- residuals(mod1)
+base1$rstudent.mod1 <- rstudent(mod1)
