@@ -1,0 +1,12 @@
+setwd("C:\\Users\\Sala-C4\\Desktop")
+require(foreign)
+mti2013 <-data.frame(read.dbf("mti2013_05_17_sdem_precodificado.dbf"))
+
+###poblacion objetiva son ocupados y zonas rurales
+
+mti2013v1<-subset(mti2013,mti2013$CLASE2==1 & mti2013$ST_LOC==4)
+View(mti2013v1)
+install.packages("questionr")
+require(questionr)
+wtd.table(mti2013v1$SEX,weights=mti2013v1$FAC_MTI)
+wtd.table(mti2013v1$T_PER,weights=mti2013v1$FAC_MTI)
